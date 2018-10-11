@@ -1,0 +1,39 @@
+hr {
+	border-color: white;
+}
+
+
+
+
+
+
+
+
+.thumbnails {
+	width: 100%;
+	margin: 0 0 1em 0;
+}
+
+
+.thumbnail-boxes {
+	padding: 2em;
+}
+
+
+.portrait {
+	width: 100%;
+	margin: 40px 0 40px 0;
+}
+
+
+body {
+	background: black;
+}
+
+
+.name,
+.title-text,
+.main-text {
+	color: white;
+}
+
