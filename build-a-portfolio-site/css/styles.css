@@ -1,20 +1,35 @@
 .title-text {
 	color: white;
-	margin: 50% 0 50% 0;
-	text-align: center;
+	padding: 20% 0;
 }
 
 
 .name {
 	font-family: 'Montserrat', sans-serif;
 	font-weight: bold;
+	text-align: center;
 }
 
 
 .subtitle {
 	font-family: 'Montserrat', sans-serif;
 	font-weight: lighter;
+	text-align: center;
+	padding-bottom: 2em;
 }
+
+
+p {
+	font-family: 'Montserrat', sans-serif;
+	font-weight: lighter;
+/*	padding: 0 40px 0 40px;*/
+}
+
+
+.display-box {
+	padding: 0 1em;
+}
+
 
 .thumbnails {
 	width: 100%;
@@ -35,4 +50,41 @@
 
 body {
 	background: black;
+}
+
+
+.pic-description {
+	text-align: center;
+	padding-top: 0;
+}
+
+
+.pic-description a {
+	color: white;
+}
+
+
+.footer {
+	background: #121212;
+	text-align: center;
+}
+
+
+.media {
+	display: inline-block;
+	margin: 20px 0;
+	color: white;
+}
+
+
+.media-icon {
+	width: 2em;
+	height: 2em;
+	margin-right: 0.5em;
+}
+
+
+.footer p {
+	margin: 0 auto;
+	color: white;
 }
