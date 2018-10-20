@@ -7,66 +7,72 @@
 	<title>Welcome to my portfolio site</title>
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 	<link rel="stylesheet" href="css/styles.css">
-<link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet">
 </head>
 <body>
 	<div class="container">
 		<!-- Main intro -->
-		<div class="row display-box">
-			<div class="col-md-6">
-				<div class="title-text">
-					<h1 class="name">Zhuo Liu</h1>
-					<h3 class="subtitle">Front-End Ninja</h3>
-					<p>I am Zhuo Liu. I am a Front-End Web Development novice. I graduated from the University of Miami with a major in Computer Science and a minor in Mathematics. I also studied Biochemistry at the University of Bristol. I love traveling and taking photos. I am learning to build amazing websites. On this portfolio, I would like to show you some pictures I took during trips.</p>
+		<header>
+			<div class="row">
+				<div class="col-md-6">
+					<img class="img-fluid logo" src="https://www.udacity.com/assets/iridium/images/core/header/udacity-wordmark.svg" alt="Udacity Logo">
+					<div class="title-text">
+						<h1 class="name">Zhuo Liu</h1>
+						<h3 class="subtitle">Front-End Ninja</h3>
+						<p>I am Zhuo Liu. I am a Front-End Web Development novice. I graduated from the University of Miami with a major in Computer Science and a minor in Mathematics. I also studied Biochemistry at the University of Bristol. I love traveling and taking photos. I am learning to build amazing websites. On this portfolio, I would like to show you some pictures I took during trips.</p>
+					</div>
+				</div>
+				<div class="col-md-6">
+					<img class="img-fluid portrait" src="img/portrait.jpg" alt="A portrait of Zhuo Liu">
 				</div>
 			</div>
-			<div class="col-md-6">
-				<img class="portrait" src="img/portrait.jpg" alt="A portrait of Zhuo Liu">
-			</div>
-		</div>
+		</header>
 
 		<!-- Thumbnails -->
-		<div class="display-box">
+		<main>
 			<div class="row">
 				<div class="col-md-6 thumbnail-boxes">
-					<img class="thumbnails" src="img/suspension-bridge.jpg" alt="Suspension Bridge at Clifton, Bristol, UK">
+					<img class="img-fluid thumbnails" src="img/suspension-bridge.jpg" alt="Suspension Bridge at Clifton, Bristol, UK">
 					<div class="pic-description">
-						<a href="https://en.wikipedia.org/wiki/Clifton_Suspension_Bridge">Clifton Suspension Bridge</p>
+						<a href="https://en.wikipedia.org/wiki/Clifton_Suspension_Bridge">Clifton Suspension Bridge</a>
 					</div>
 				</div>
 				<div class="col-md-6 thumbnail-boxes">
-					<img class="thumbnails" src="img/europa-point.jpg" alt="View from Europa Point at Gibraltar, UK">
+					<img class="img-fluid thumbnails" src="img/europa-point.jpg" alt="View from Europa Point at Gibraltar, UK">
 					<div class="pic-description">
 						<a href="https://en.wikipedia.org/wiki/Europa_Point">View from Europa Point</a>
 					</div>
 				</div>
 			</div>
+
 			<div class="row">
 				<div class="col-md-6 thumbnail-boxes">
-					<img class="thumbnails" src="img/hyde-park-squirrel.jpg" alt="A squirrel at Hyde Park, London, UK">
+					<img class="img-fluid thumbnails" src="img/hyde-park-squirrel.jpg" alt="A squirrel at Hyde Park, London, UK">
 					<div class="pic-description">
-						<a href="https://en.wikipedia.org/wiki/Hyde_Park,_London">A squirrel at Hyde Park</p>
+						<a href="https://en.wikipedia.org/wiki/Hyde_Park,_London">A squirrel at Hyde Park</a>
 					</div>
 				</div>
 				<div class="col-md-6 thumbnail-boxes">
-					<img class="thumbnails" src="img/view-from-old-man-of-storr.jpg" alt="View from Old Man of Storr, Isle of Skye, UK">
+					<img class="img-fluid thumbnails" src="img/view-from-old-man-of-storr.jpg" alt="View from Old Man of Storr, Isle of Skye, UK">
 					<div class="pic-description">
-						<a href="https://en.wikipedia.org/wiki/The_Storr"> View from the Old Man of Storr</p>
+						<a href="https://en.wikipedia.org/wiki/The_Storr"> View from the Old Man of Storr</a>
 					</div>
 				</div>
 			</div>
-		</div>
+		</main>
 
 		<!-- Footer -->
-		<div class="row footer">
-			<div class="col-md-12">
-				<a class="media" href="https://www.instagram.com/vin_lz/">
-					<img class="media-icon" src="img/instagram-png-instagram-icon-png-50-px-512.png" alt="instagram icon">
-					Find me on Instragram
-				</a>
+		<footer>
+			<div class="row footer">
+				<div class="col-md-12">
+					<a class="media" href="https://www.instagram.com/vin_lz/">
+						<img class="img-fluid media-icon" src="img/instagram-png-instagram-icon-png-50-px-512.png" alt="instagram icon">
+						Find me on Instragram
+					</a>
+				</div>
+				<p>© Zhuo Liu All rights reserved.</p>
 			</div>
-			<p>© Zhuo Liu All rights reserved.</p>
-		</div>
+		</footer>
 	</div>
 </body>
 </html>
