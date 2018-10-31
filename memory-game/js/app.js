@@ -8,7 +8,7 @@ let cardTypes = ['fa-diamond', 'fa-diamond',
 'fa-bicycle', 'fa-bicycle',
 'fa-bomb', 'fa-bomb'];
 
-let moves = 0;
+let moves;
 
 let cards;
 let openCards = [];
@@ -39,6 +39,8 @@ let openCardsCount = 0;
  *   - add each card's HTML to the page
  */
  function initGame() {
+ 	moves = 0;
+ 	document.querySelector('.moves').innerText = moves;
  	cardTypes = shuffle(cardTypes);
  	let deck = document.querySelector('.deck');
  	deck.innerHTML = creatCardListHTML();
@@ -75,6 +77,8 @@ for (let card of cards) {
 				openCards.push(card);
 				openCardsCount++;
 				if (openCardsCount == 2) {
+					moves++;
+					document.querySelector('.moves').innerText = moves;
 					if (openCards[0].dataset.card != openCards[1].dataset.card) {
 						setTimeout(function() {
 							for (let card of openCards) {
