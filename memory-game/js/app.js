@@ -7,16 +7,11 @@ let cardTypes = ['fa-diamond', 'fa-diamond',
 'fa-leaf', 'fa-leaf',
 'fa-bicycle', 'fa-bicycle',
 'fa-bomb', 'fa-bomb'];
-
 let moves;
-
 let cards;
 let openCards = [];
 let openCardsCount = 0;
-
-
-
-
+let stars = 3;
 
 /*
  * Create a list that holds all of your cards
@@ -48,6 +43,7 @@ let openCardsCount = 0;
  	let deck = document.querySelector('.deck');
  	deck.innerHTML = creatCardListHTML();
  	cards = document.querySelectorAll('.card');
+ 	document.querySelector('.stars').innerHTML = '<li><i class="fa fa-star"></i></li>'.repeat(3);
  	game(cards);
  }
 
@@ -66,13 +62,6 @@ function shuffle(array) {
 	return array;
 }
 
-function handleClick(event, card) {
-
-}
-
-
-
-
 function game(cards) {
 	for (let card of cards) {
 		card.addEventListener('click', function(event) {
@@ -84,6 +73,13 @@ function game(cards) {
 					openCardsCount++;
 					if (openCardsCount == 2) {
 						moves++;
+						if (moves >= 5 && moves < 10) {
+							document.querySelector('.stars').innerHTML = '<li><i class="fa fa-star"></i></li>'.repeat(2)+ '<li><i class="fa fa-star-o"></i></li>';
+						} else if (moves >= 10 && moves < 15) {
+							document.querySelector('.stars').innerHTML = '<li><i class="fa fa-star"></i></li>' + '<li><i class="fa fa-star-o"></i></li>'.repeat(2);
+						} else if (moves >= 15) {
+							document.querySelector('.stars').innerHTML = '<li><i class="fa fa-star-o"></i></li>'.repeat(3);
+						}
 						document.querySelector('.moves').innerText = moves;
 						if (openCards[0].dataset.card != openCards[1].dataset.card) {
 							setTimeout(function() {
@@ -108,13 +104,17 @@ function game(cards) {
 	}
 }
 
+function win() {
+
+}
 
 initGame();
 
 document.querySelector('.restart').addEventListener('click', function(event) {
 	initGame();
-	//restart still has bug. sleep first. 
 });
+
+
 
 
 
