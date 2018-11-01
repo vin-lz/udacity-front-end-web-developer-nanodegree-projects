@@ -40,10 +40,15 @@ let openCardsCount = 0;
  */
  function initGame() {
  	moves = 0;
+ 	openCards = [];
+ 	openCardsCount = 0;
+ 	cards = [];
  	document.querySelector('.moves').innerText = moves;
  	cardTypes = shuffle(cardTypes);
  	let deck = document.querySelector('.deck');
  	deck.innerHTML = creatCardListHTML();
+ 	cards = document.querySelectorAll('.card');
+ 	game(cards);
  }
 
 // Shuffle function from http://stackoverflow.com/a/2450976
@@ -65,41 +70,53 @@ function handleClick(event, card) {
 
 }
 
-initGame();
 
-cards = document.querySelectorAll('.card');
-for (let card of cards) {
-	card.addEventListener('click', function(event) {
-		if (openCardsCount < 2) {
-			if (!card.classList.contains('open') && !card.classList.contains('show') && !card.classList.contains('match')) {
-				card.classList.add('open', 'show');
-				console.log("opened");
-				openCards.push(card);
-				openCardsCount++;
-				if (openCardsCount == 2) {
-					moves++;
-					document.querySelector('.moves').innerText = moves;
-					if (openCards[0].dataset.card != openCards[1].dataset.card) {
-						setTimeout(function() {
+
+
+function game(cards) {
+	for (let card of cards) {
+		card.addEventListener('click', function(event) {
+			if (openCardsCount < 2) {
+				if (!card.classList.contains('open') && !card.classList.contains('show') && !card.classList.contains('match')) {
+					card.classList.add('open', 'show');
+					console.log("opened");
+					openCards.push(card);
+					openCardsCount++;
+					if (openCardsCount == 2) {
+						moves++;
+						document.querySelector('.moves').innerText = moves;
+						if (openCards[0].dataset.card != openCards[1].dataset.card) {
+							setTimeout(function() {
+								for (let card of openCards) {
+									card.classList.remove('open', 'show');
+								}
+								openCards = [];
+								openCardsCount = 0;
+							}, 1000);
+						} else {
 							for (let card of openCards) {
-								card.classList.remove('open', 'show');
+								card.classList.add('match');
 							}
-							openCards = [];
-							openCardsCount = 0;
-						}, 1000);
-					} else {
-						for (let card of openCards) {
-							card.classList.add('match');
-						}
 						//here to add score by 1
 						openCards = [];
 						openCardsCount = 0;
+					    }
 					}
 				}
 			}
-		}
-	});
+		});
+	}
 }
+
+
+initGame();
+
+document.querySelector('.restart').addEventListener('click', function(event) {
+	initGame();
+	//restart still has bug. sleep first. 
+});
+
+
 
 
 
