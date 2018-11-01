@@ -12,6 +12,7 @@ let cards;
 let openCards = [];
 let openCardsCount = 0;
 let stars = 3;
+let matched;
 
 /*
  * Create a list that holds all of your cards
@@ -38,6 +39,7 @@ let stars = 3;
  	openCards = [];
  	openCardsCount = 0;
  	cards = [];
+ 	matched = 0;
  	document.querySelector('.moves').innerText = moves;
  	cardTypes = shuffle(cardTypes);
  	let deck = document.querySelector('.deck');
@@ -67,7 +69,7 @@ function game(cards) {
 		card.addEventListener('click', function(event) {
 			if (openCardsCount < 2) {
 				if (!card.classList.contains('open') && !card.classList.contains('show') && !card.classList.contains('match')) {
-					card.classList.add('open', 'show');
+					card.classList.add('open', 'show', 'flipped');
 					console.log("opened");
 					openCards.push(card);
 					openCardsCount++;
@@ -84,7 +86,7 @@ function game(cards) {
 						if (openCards[0].dataset.card != openCards[1].dataset.card) {
 							setTimeout(function() {
 								for (let card of openCards) {
-									card.classList.remove('open', 'show');
+									card.classList.remove('open', 'show', 'flipped');
 								}
 								openCards = [];
 								openCardsCount = 0;
@@ -93,10 +95,14 @@ function game(cards) {
 							for (let card of openCards) {
 								card.classList.add('match');
 							}
+							matched++;
+							if (matched == 8) {
+								win();
+							}
 						//here to add score by 1
 						openCards = [];
 						openCardsCount = 0;
-					    }
+						}
 					}
 				}
 			}
@@ -105,7 +111,7 @@ function game(cards) {
 }
 
 function win() {
-
+	console.log('Win!!!!!');
 }
 
 initGame();
