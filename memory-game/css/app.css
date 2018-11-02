@@ -51,6 +51,55 @@ h1 {
     margin: 0 0 3em;
 }
 
+
+@keyframes swing {
+/*    0% {
+        transform: rotateY(180deg);
+    }*/
+    20% {
+        transform: rotate(-15deg);
+    }
+    40% {
+        transform: rotate(15deg);
+    }
+    60% {
+        transform: rotate(-7.5deg);
+    }
+    80% {
+        transform: rotate(7.5deg);
+    }
+    100% {
+        transform: none;
+    }
+}
+
+@keyframes shake {
+    20% {
+        transform: none;
+    }
+    40% {
+        transform: scaleX(0.75) scaleY(1.25);
+    }
+    60% {
+        transform: scaleX(1.25) scaleY(0.75);
+    }
+    80% {
+        transform: scaleX(0.90) scaleY(1.10);
+    }
+    100% {
+        transform: none;
+    }
+}
+.shake {
+    animation: shake 0.5s;
+    transform-origin: center;
+}
+
+.swing {
+    background: #f43838 !important;
+    animation: swing 0.5s;
+    transform-origin: bottom;
+}
 .deck .card {
     height: 125px;
     width: 125px;
@@ -63,11 +112,11 @@ h1 {
     justify-content: center;
     align-items: center;
     box-shadow: 5px 2px 20px 0 rgba(46, 61, 73, 0.5);
-    transition: transform 0.3s;
+    transition: transform 0.1s;
 }
 
 .deck .card.open {
-    transform: rotateY(180deg);
+    transform: rotateY(360deg);
     background: #02b3e4;
     cursor: default;
 }

@@ -69,7 +69,7 @@ function game(cards) {
 		card.addEventListener('click', function(event) {
 			if (openCardsCount < 2) {
 				if (!card.classList.contains('open') && !card.classList.contains('show') && !card.classList.contains('match')) {
-					card.classList.add('open', 'show', 'flipped');
+					card.classList.add('open', 'show');
 					console.log("opened");
 					openCards.push(card);
 					openCardsCount++;
@@ -84,16 +84,19 @@ function game(cards) {
 						}
 						document.querySelector('.moves').innerText = moves;
 						if (openCards[0].dataset.card != openCards[1].dataset.card) {
+							for (let card of openCards) {
+									card.classList.add('swing');
+								}
 							setTimeout(function() {
 								for (let card of openCards) {
-									card.classList.remove('open', 'show', 'flipped');
+									card.classList.remove('open', 'show', 'swing');
 								}
 								openCards = [];
 								openCardsCount = 0;
 							}, 1000);
 						} else {
 							for (let card of openCards) {
-								card.classList.add('match');
+								card.classList.add('match', 'shake');
 							}
 							matched++;
 							if (matched == 8) {
