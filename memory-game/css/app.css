@@ -153,6 +153,14 @@ h1 {
     display: inline-block;
 }
 
+.score-panel .timer {
+    padding-left: 2em;
+}
+
+.score-panel .timer .time {
+    padding-left: 0.5em;
+}
+
 .score-panel .restart {
     float: right;
     cursor: pointer;

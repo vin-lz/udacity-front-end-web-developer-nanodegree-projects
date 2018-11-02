@@ -13,6 +13,7 @@ let openCards = [];
 let openCardsCount = 0;
 let stars = 3;
 let matched;
+let timer = document.querySelector('.time');
 
 /*
  * Create a list that holds all of your cards
@@ -65,8 +66,13 @@ function shuffle(array) {
 }
 
 function game(cards) {
+	let started = false;
 	for (let card of cards) {
 		card.addEventListener('click', function(event) {
+			if (started == false) {
+				startTimer();
+				started = true;
+			}
 			if (openCardsCount < 2) {
 				if (!card.classList.contains('open') && !card.classList.contains('show') && !card.classList.contains('match')) {
 					card.classList.add('open', 'show');
@@ -93,7 +99,7 @@ function game(cards) {
 								}
 								openCards = [];
 								openCardsCount = 0;
-							}, 1000);
+							}, 500);
 						} else {
 							for (let card of openCards) {
 								card.classList.add('match', 'shake');
@@ -111,6 +117,20 @@ function game(cards) {
 			}
 		});
 	}
+}
+
+function startTimer() {
+	let second = 0;
+	let minute = 0;
+	setInterval(function() {
+		second++;
+		if (second >= 60) {
+        	second = 0;
+        	minute++;
+    	}
+    	timer.innerHTML = `${minute} : ${second}`;
+	}, 1000);
+
 }
 
 function win() {
