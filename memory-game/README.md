@@ -1,10 +1,10 @@
-#Memory-Game
+# Memory-Game
 
-##Introduction
+## Introduction
 
 This is a board game consisting of sixteen "cards" arranged in a grid. The deck is made up of eight different pairs of cards, each with different symbols on one side. The cards are arranged randomly on the grid with the symbol face down. The gameplay rules are very simple: flip over two hidden cards at a time to locate the ones that match!
 
-###Each turn:
+### Each turn:
 
 * The player flips one card over to reveal its underlying symbol.
 * If the cards match, both cards stay flipped over.
@@ -13,6 +13,6 @@ This is a board game consisting of sixteen "cards" arranged in a grid. The deck 
 
 To start the game, simply just load the 'index.html'.
 
-##License
+## License
 
 This is a project in the Undacity Front-End Web Development Nanodegree Program.
