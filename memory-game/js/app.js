@@ -99,9 +99,6 @@ function game(cards) {
 						} else if (moves >= 24 && moves < 32) {
 							document.querySelector('.stars').innerHTML = '<li><i class="fa fa-star"></i></li>' + '<li><i class="fa fa-star-o"></i></li>'.repeat(2);
 							stars = 1;
-						} else if (moves >= 32) {
-							document.querySelector('.stars').innerHTML = '<li><i class="fa fa-star-o"></i></li>'.repeat(3);
-							stars = 0;
 						}
 						document.querySelector('.moves').innerText = moves;
 						//if the cards do not match, remove the cards from the list and hide the card's symbol
