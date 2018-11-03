@@ -11,7 +11,7 @@ This is a board game consisting of sixteen "cards" arranged in a grid. The deck 
 * If the cards do not match, both cards are flipped face down.
 * The game ends once all cards have been correctly matched.
 
-To start the game, simply just load the 'index.html'.
+To start the game, simply just load the `index.html`.
 
 ## License
 
