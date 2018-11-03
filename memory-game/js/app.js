@@ -13,42 +13,50 @@ let openCards = [];
 let openCardsCount = 0;
 let stars = 3;
 let matched;
-let timer = document.querySelector('.time');
+let clock;
+let timer;
+let second = 0;
+let minute = 0;
 
-/*
- * Create a list that holds all of your cards
- */
+
  function createCard(cardType) {
  	return `<li class="card" data-card="${cardType}"><i class="fa ${cardType}"></i></li>`;
  }
 
+
  function creatCardListHTML() {
+ 	//loop through each card and create its HTML
  	let cardHTML = cardTypes.map(function(card) {
  		return createCard(card);
  	});
+ 	//Create a list that holds all of your cards
  	return cardHTML.join(' ');
  }
 
-/*
- * Display the cards on the page
- *   - shuffle the list of cards using the provided 'shuffle' method below
- *   - loop through each card and create its HTML
- *   - add each card's HTML to the page
- */
+
  function initGame() {
  	moves = 0;
  	openCards = [];
  	openCardsCount = 0;
  	cards = [];
  	matched = 0;
+ 	document.querySelector('.container').innerHTML = '<header><h1>Matching Game</h1></header><section class="score-panel"><ul class="stars"></ul><span class="moves">0</span> Moves<span class="timer">Time   <span class="time">-- : --</span></span><div class="restart"><i class="fa fa-repeat"></i></div></section><ul class="deck"></ul>';
+ 	timer = document.querySelector('.time');
+ 	timer.innerText = '-- : --';
  	document.querySelector('.moves').innerText = moves;
+ 	//shuffle the list of cards using the provided 'shuffle' method below
  	cardTypes = shuffle(cardTypes);
  	let deck = document.querySelector('.deck');
+ 	//add each card's HTML to the page
  	deck.innerHTML = creatCardListHTML();
  	cards = document.querySelectorAll('.card');
  	document.querySelector('.stars').innerHTML = '<li><i class="fa fa-star"></i></li>'.repeat(3);
+ 	clearInterval(clock);
+ 	second = 0;
+ 	minute = 0;
  	game(cards);
  }
+
 
 // Shuffle function from http://stackoverflow.com/a/2450976
 function shuffle(array) {
@@ -65,34 +73,42 @@ function shuffle(array) {
 	return array;
 }
 
+
 function game(cards) {
 	let started = false;
+	//set up the event listener for a card. If a card is clicked
 	for (let card of cards) {
 		card.addEventListener('click', function(event) {
 			if (started == false) {
 				startTimer();
 				started = true;
 			}
+			//display the card's symbol
 			if (openCardsCount < 2) {
+				//if the list already has another card, check to see if the two cards match
 				if (!card.classList.contains('open') && !card.classList.contains('show') && !card.classList.contains('match')) {
 					card.classList.add('open', 'show');
-					console.log("opened");
 					openCards.push(card);
 					openCardsCount++;
 					if (openCardsCount == 2) {
+						//increment the move counter and display it on the page
 						moves++;
-						if (moves >= 5 && moves < 10) {
+						if (moves >= 16 && moves < 24) {
 							document.querySelector('.stars').innerHTML = '<li><i class="fa fa-star"></i></li>'.repeat(2)+ '<li><i class="fa fa-star-o"></i></li>';
-						} else if (moves >= 10 && moves < 15) {
+							stars = 2;
+						} else if (moves >= 24 && moves < 32) {
 							document.querySelector('.stars').innerHTML = '<li><i class="fa fa-star"></i></li>' + '<li><i class="fa fa-star-o"></i></li>'.repeat(2);
-						} else if (moves >= 15) {
+							stars = 1;
+						} else if (moves >= 32) {
 							document.querySelector('.stars').innerHTML = '<li><i class="fa fa-star-o"></i></li>'.repeat(3);
+							stars = 0;
 						}
 						document.querySelector('.moves').innerText = moves;
+						//if the cards do not match, remove the cards from the list and hide the card's symbol
 						if (openCards[0].dataset.card != openCards[1].dataset.card) {
 							for (let card of openCards) {
-									card.classList.add('swing');
-								}
+								card.classList.add('swing');
+							}
 							setTimeout(function() {
 								for (let card of openCards) {
 									card.classList.remove('open', 'show', 'swing');
@@ -101,14 +117,15 @@ function game(cards) {
 								openCardsCount = 0;
 							}, 500);
 						} else {
+							//if the cards do match, lock the cards in the open position
 							for (let card of openCards) {
 								card.classList.add('match', 'shake');
 							}
 							matched++;
 							if (matched == 8) {
+								//if all cards have matched, display a message with the final score
 								win();
 							}
-						//here to add score by 1
 						openCards = [];
 						openCardsCount = 0;
 						}
@@ -119,43 +136,28 @@ function game(cards) {
 	}
 }
 
+
 function startTimer() {
-	let second = 0;
-	let minute = 0;
-	setInterval(function() {
+	clock = setInterval(function() {
 		second++;
 		if (second >= 60) {
-        	second = 0;
-        	minute++;
-    	}
-    	timer.innerHTML = `${minute} : ${second}`;
+			second = 0;
+			minute++;
+		}
+		timer.innerHTML = `${minute} : ${second}`;
 	}, 1000);
-
 }
+
 
 function win() {
-	console.log('Win!!!!!');
+	document.querySelector('.container').innerHTML = `<div class="popup"><img src="img/checkmark.png" alt="checkmark"><h2>Congratulations! You Won!</h2><p>With ${moves} Moves and ${stars} Stars in ${minute} minutes and ${second} seconds.</p><p>Woooooo!</p><button class="again">Play again!</button></div>`;
+	document.querySelector('.again').addEventListener('click', function(event) {
+		initGame();
+	});
 }
 
-initGame();
 
+initGame();
 document.querySelector('.restart').addEventListener('click', function(event) {
 	initGame();
 });
-
-
-
-
-
-
-
-/*
- * set up the event listener for a card. If a card is clicked:
- *  - display the card's symbol (put this functionality in another function that you call from this one)
- *  - add the card to a *list* of 'open' cards (put this functionality in another function that you call from this one)
- *  - if the list already has another card, check to see if the two cards match
- *    + if the cards do match, lock the cards in the open position (put this functionality in another function that you call from this one)
- *    + if the cards do not match, remove the cards from the list and hide the card's symbol (put this functionality in another function that you call from this one)
- *    + increment the move counter and display it on the page (put this functionality in another function that you call from this one)
- *    + if all cards have matched, display a message with the final score (put this functionality in another function that you call from this one)
- */
