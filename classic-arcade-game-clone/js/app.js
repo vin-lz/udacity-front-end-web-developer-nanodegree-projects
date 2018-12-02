@@ -24,12 +24,49 @@ Enemy.prototype.render = function() {
 // Now write your own player class
 // This class requires an update(), render() and
 // a handleInput() method.
+class Player {
+    constructor() {
+        this.x = 202;
+        this.y = 400;
+        this.sprite = 'images/char-boy.png';
+    }
+
+    // Draw the player on the screen, required method for game
+    render() {
+        ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
+    }
+
+    handleInput(input) {
+        switch(input) {
+            case 'left':
+                if (this.x > 0) { 
+                    this.x -= 101;
+                }
+                break;
+            case 'right':
+                if (this.x < 101 * 4) {
+                    this.x += 101;   
+                }
+                break;
+            case 'up':
+                if (this.y > 0) {
+                    this.y -= 83;
+                }
+                break;
+            case 'down':
+                if (this.y < 83 * 4) {
+                    this.y += 83;
+                }
+                break;
+        }
+    }
+}
 
 
 // Now instantiate your objects.
 // Place all enemy objects in an array called allEnemies
 // Place the player object in a variable called player
-
+const player = new Player();
 
 
 // This listens for key presses and sends the keys to your
