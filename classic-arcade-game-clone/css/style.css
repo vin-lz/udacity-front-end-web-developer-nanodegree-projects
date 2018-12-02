@@ -1,3 +1,40 @@
 body {
     text-align: center;
 }
+
+.modal {
+	position: absolute;;
+	top: 0;
+	left: 0;
+	height: 100%;
+	width: 100%;
+}
+.modal-body {
+	position: relative;
+	width: 150px;
+	height:150px;
+	top: 50%;
+	left: 50%;
+	background: cyan;
+	transform: translate(-50%, -170%);
+}
+
+.modal p {
+	padding: 1em;
+}
+
+
+.modal-button {
+	display: flex;
+	justify-content: space-around;
+	padding: 1em;
+}
+
+.modal-replay-button {
+	width: 60px;
+	height: 30px;
+}
+
+.hide {
+	display: none;
+}

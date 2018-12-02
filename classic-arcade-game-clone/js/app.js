@@ -1,8 +1,17 @@
+//Global constants
+const gridWidthX = 101;
+const gridWidthY = 83;
+const centerOffsetX = 60;
+const centerOffsetY = 20;
+
 // Enemies our player must avoid
-var Enemy = function() {
+var Enemy = function(x, y , speed) {
     // Variables applied to each of our instances go here,
     // we've provided one for you to get started
-
+    this.x = x;
+    this.y = y;
+    this.speed = speed;
+    this.win = false;
     // The image/sprite for our enemies, this uses
     // a helper we've provided to easily load images
     this.sprite = 'images/enemy-bug.png';
@@ -14,6 +23,11 @@ Enemy.prototype.update = function(dt) {
     // You should multiply any movement by the dt parameter
     // which will ensure the game runs at the same speed for
     // all computers.
+    if (this.x < gridWidthX * 5) {
+        this.x += this.speed * dt;
+    } else {
+        this.x = -gridWidthX;
+    }
 };
 
 // Draw the enemy on the screen, required method for game
@@ -26,11 +40,22 @@ Enemy.prototype.render = function() {
 // a handleInput() method.
 class Player {
     constructor() {
-        this.x = 202;
-        this.y = 400;
+        this.x = gridWidthX * 2;
+        this.y = gridWidthY * 5 - centerOffsetY;
         this.sprite = 'images/char-boy.png';
     }
 
+    update() {
+        for (let enemy of allEnemies) {
+            if (this.y === enemy.y && (enemy.x + gridWidthX / 2 >this.x) && (enemy.x - gridWidthX / 2 < this.x)) {
+                this.reset();
+            }
+        }
+        if (this.y < centerOffsetY) {
+            this.win = true;
+            // this.reset();
+        }
+    }
     // Draw the player on the screen, required method for game
     render() {
         ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
@@ -40,22 +65,22 @@ class Player {
         switch(input) {
             case 'left':
                 if (this.x > 0) { 
-                    this.x -= 101;
+                    this.x -= gridWidthX;
                 }
                 break;
             case 'right':
-                if (this.x < 101 * 4) {
-                    this.x += 101;   
+                if (this.x < gridWidthX * 4) {
+                    this.x += gridWidthX;   
                 }
                 break;
             case 'up':
                 if (this.y > 0) {
-                    this.y -= 83;
+                    this.y -= gridWidthY;
                 }
                 break;
             case 'down':
-                if (this.y < 83 * 4) {
-                    this.y += 83;
+                if (this.y < gridWidthY * 4) {
+                    this.y += gridWidthY;
                 }
                 break;
         }
@@ -67,7 +92,13 @@ class Player {
 // Place all enemy objects in an array called allEnemies
 // Place the player object in a variable called player
 const player = new Player();
-
+const allEnemies = [];
+const enemy1 = new Enemy(-gridWidthX, gridWidthY - centerOffsetY , Math.random() * 500 + 100);
+const enemy2 = new Enemy(-gridWidthX, gridWidthY * 2 - centerOffsetY, Math.random() * 300 + 100);
+const enemy3 = new Enemy(-gridWidthX, gridWidthY * 3 - centerOffsetY, Math.random() * 100 + 100);
+const enemy4 = new Enemy(-gridWidthX, gridWidthY - centerOffsetY , Math.random() * 500 + 100);
+const enemy5 = new Enemy(-gridWidthX, gridWidthY * 2 - centerOffsetY, Math.random() * 300 + 100);
+allEnemies.push(enemy1, enemy2, enemy3, enemy4, enemy5);
 
 // This listens for key presses and sends the keys to your
 // Player.handleInput() method. You don't need to modify this.
