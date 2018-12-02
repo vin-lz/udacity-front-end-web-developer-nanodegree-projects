@@ -1,20 +1,17 @@
 # Classic Arcade Game Clone Project
 
-## Table of Contents
-
-- [Instructions](#instructions)
-- [Contributing](#contributing)
-
 ## Instructions
 
-Use this [rubric](https://review.udacity.com/#!/rubrics/15/view) for self-checking your submission.
+In this game you have a player and a few bugs. The goal of the player is to reach the water, without colliding into any one of the bugs. The player can move left, right, up and down, controlled by the keyboard. The bugs move at random speeds on the paved block portion of the game board. Once the player collides with an enemy, the game is reset and the player moves back to the starting position. Once the player reaches the water (i.e., the top of the game board), the game is won.
 
-Make sure the functions you write are **object-oriented** - either class functions (like `Player` and `Enemy`) or class prototype functions such as `Enemy.prototype.checkCollisions`. Also make sure that the keyword `this` is used appropriately within your class and class prototype functions to refer to the object the function is called upon.
+### Each turn:
 
-Your **README.md** file should be updated with instructions on both how to 1. Run and 2. Play your arcade game.
+* The player use the left, right, up and down keys on keyboard to control the move of the charactor.
+* Avoid collision with bugs that run from the left to the right of the screen.
+* Win the game when the charactor reach the water.
 
-For detailed instructions on how to get started, check out this [guide](https://docs.google.com/document/d/1v01aScPjSWCCWQLIpFqvg3-vXLH2e8_SZQKC8jNO0Dc/pub?embedded=true).
+To start the game, simply just load the `index.html`.
 
 ## Contributing
 
-This repository is the starter code for _all_ Udacity students. Therefore, we most likely will not accept pull requests.
+This is a project in the Undacity Front-End Web Development Nanodegree Program. Special thanks to Matthew Cranford's blog when I got stuck by difficulties.
