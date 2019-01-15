@@ -106,12 +106,14 @@ $(function() {
          */
         beforeEach(function(done) {
             loadFeed(0, function() {
+                //grab the feed in the frist run
                 firstRun = document.querySelector('.feed').innerHTML;
             });
             loadFeed(1, done);
         });
 
         it('content changes', function() {
+            //grab the feed in the second run
             secondRun = document.querySelector('.feed').innerHTML;
             expect(firstRun).not.toBe(secondRun);
         });
