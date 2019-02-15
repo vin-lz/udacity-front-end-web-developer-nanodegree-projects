@@ -1,5 +1,5 @@
 # udacity-front-end-web-developer-nanodegree-projects
-This is a repository for Front-End-Web Development Nanodegree at Udacity. Fall 2018
+This is a repository for Front-end Web Developer Nanodegree at Udacity. Fall 2018
 ## Projects
 This respository includes following projects:
 * Build a portfolio site
