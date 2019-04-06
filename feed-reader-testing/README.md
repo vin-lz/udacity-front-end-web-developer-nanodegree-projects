@@ -17,4 +17,4 @@ Simply just load the `index.html`.
 
 ## Contributing
 
-This is a project in the Undacity Front-End Web Development Nanodegree Program.
+This is a project in the Udacity Front-End Web Development Nanodegree Program.
