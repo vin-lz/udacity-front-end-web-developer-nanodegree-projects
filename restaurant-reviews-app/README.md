@@ -12,4 +12,4 @@ In this project, a static webpage is converted to a mobile-ready web application
 
 ## Contributing
 
-This is a project in the Undacity Front-End Web Development Nanodegree Program. Special thanks to Matthew Cranford's blog when I got stuck by difficulties.
+This is a project in the Udacity Front-End Web Development Nanodegree Program. Special thanks to Matthew Cranford's blog when I got stuck by difficulties.
